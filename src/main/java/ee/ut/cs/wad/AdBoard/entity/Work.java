@@ -21,10 +21,55 @@ public class Work {
     String city;
 
     @Column(name = "TypeOfWork")
-    String gender;
+    String typeOfwork;
 
     @Column(name = "Description")//some text about me
             String description;
+
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Long getId() {
+
+        return id;
+    }
+
+    public User getUser_id() {
+        return user_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getTypeOfwork() {
+        return typeOfwork;
+    }
+
+    public void setTypeOfwork(String typeOfwork) {
+
+        this.typeOfwork = typeOfwork;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
 
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping({"/", "/offerWork"})
+@RequestMapping("/offerWork")
 public class OfferWorkController {
 
     private static final String FINDWORK_PAGE = "offerWork/offerWork";
