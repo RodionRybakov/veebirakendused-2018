@@ -18,8 +18,7 @@ public class SignInController {
 
         Variables v = new Variables();
         v.turn_nav_barOn(model);
-
-
         return SIGNIN_PAGE;
     }
+
 }

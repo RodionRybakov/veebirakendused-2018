@@ -19,3 +19,4 @@ public class SignupController {
         return SIGNUP_PAGE;
     }
 }
+

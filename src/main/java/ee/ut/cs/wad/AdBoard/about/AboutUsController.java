@@ -20,4 +20,15 @@ public class AboutUsController {
 
         return ABOUTUS_PAGE;
     }
+    // Login form
+    @RequestMapping("/signin")
+    public String login() {
+        return "/signIn";
+    }
+    // Login form with error
+    @RequestMapping("errors/error.html")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "/signIn";
+    }
 }
