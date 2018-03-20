@@ -1,0 +1,48 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='AdBoard HomePage'"></head>
+
+<body>
+<div th:include="layout :: navbar">(navbar)</div>
+
+<div th:if="${successMessage != null}" class="alert alert-success" role="alert" th:text="${successMessage}"></div>
+<div th:if="${errorMessage != null}" class="alert alert-danger" role="alert" th:text="${errorMessage}"></div>
+<br>
+
+<form novalidate method="post">
+    <div>
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="" value="" required>
+    </div>
+    
+    <div>
+        <label for="password">Password</label>
+        <input type="text" class="form-control" id="password" name="password" placeholder="" value="" required>
+    </div>
+    
+    <div>
+        <label for="password_confirm">Password confirm</label>
+        <input type="text" class="form-control" id="password_confirm" name="password_confirm" placeholder="" value="" required>
+    </div>
+    
+    <div>
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="" required>
+    </div>
+    
+    <div>
+        <label for="lastName">Last name</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="" required>
+    </div>
+    
+    <div>
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="" value="" required>
+    </div>
+    
+    <button type="submit">submit</button>
+</form>
+
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>
