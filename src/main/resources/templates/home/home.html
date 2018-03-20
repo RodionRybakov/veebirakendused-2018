@@ -6,22 +6,20 @@
 <div th:include="layout :: navbar">(navbar)</div>
 
 <div class="container">
-	<div class="col-md-10 col-md-offset-1">
-		<table class="table table-borderless">
-			<tbody>
-			<tr>
-				<td align="middle"><h3>Job for a day or a year</h3></td>
-				<td align="middle"><h3>Thousands of workers search every day</h3></td>
-			</tr>
-			<tr>
-				<td align="middle"><a href="#" class="btn btn-lg btn-success">I want to work <span
-						class="glyphicon glyphicon-circle-arrow-up"></span></a></td>
-				<td align="middle"><a href="#" class="btn btn-lg btn-primary">I need workers <span
-						class="glyphicon glyphicon-circle-arrow-down"></span></a></td>
-			</tr>
-			</tbody>
-		</table>
-	</div>
+	<table class="table table-borderless">
+		<tbody>
+		<tr>
+			<td align="middle"><h3>Job for a day or a year</h3></td>
+			<td align="middle"><h3>Thousands of workers search every day</h3></td>
+		</tr>
+		<tr>
+			<td align="middle"><a href="/templates/work/work.html" class="btn btn-lg btn-success">I want to work <i
+					class="fas fa-arrow-circle-up"></i></a></td>
+			<td align="middle"><a href="/templates/work/work.html" class="btn btn-lg btn-info">I need workers <i
+					class="fas fa-arrow-circle-down"></i></a></td>
+		</tr>
+		</tbody>
+	</table>
 </div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>
