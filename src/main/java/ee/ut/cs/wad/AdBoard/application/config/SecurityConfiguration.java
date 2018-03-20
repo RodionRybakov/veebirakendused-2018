@@ -12,7 +12,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		String[] resources = {"/","/home","/findWork","/signIn","/signUp","/about","/offerWork", "/css/**", "/js/**"};
+		String[] resources = {"/","/home","/findWork","/signIn","/signup","/about","/offerWork", "/css/**", "/js/**"};
 		
 		http.cors().and().csrf().disable();
 		http.authorizeRequests()
@@ -20,12 +20,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST, resources).permitAll()
 				.anyRequest().authenticated().and().formLogin().permitAll();
 
-		http
-				.formLogin()
-				.loginPage("/signin/signIn.html")
-				.failureUrl("/errors/error.html")
-				.and()
-				.logout()
-				.logoutSuccessUrl("/aboutUs/about.html");
+//		http
+//				.formLogin()
+//				.loginPage("/signin/signIn.html")
+//				.failureUrl("/errors/error.html")
+//				.and()
+//				.logout()
+//				.logoutSuccessUrl("/aboutUs/about.html");
 	}
 }
