@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserController {
 	
+	private static final String HOME_PAGE = "home/home";
 	private static final String SIGNUP_PAGE = "signup/signup";
 	private final UserService userService;
 	private final PasswordEncoder passwordEncoder;
@@ -22,10 +23,10 @@ public class UserController {
 		this.passwordEncoder = passwordEncoder;
 	}
 	
-//	@RequestMapping(value = "/login", method = RequestMethod.POST)
-//	public String login(@ModelAttribute UserDTO userDTO) {
-//
-//	}
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(@ModelAttribute UserDTO userDTO) {
+		return HOME_PAGE;
+	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signup() {

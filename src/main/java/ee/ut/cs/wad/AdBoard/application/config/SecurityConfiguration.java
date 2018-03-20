@@ -12,20 +12,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		String[] resources = {"/", "/signup", "/css/**", "/js/**"};
+		String[] resources = {"/", "/signup",
+				"/img/**", "/css/**", "/js/**", "/webjars/**", "/META-INF/resources/webjars/**"};
 		
 		http.cors().and().csrf().disable();
 		http.authorizeRequests()
 				.antMatchers(HttpMethod.GET, resources).permitAll()
 				.antMatchers(HttpMethod.POST, resources).permitAll()
-				.anyRequest().authenticated().and().formLogin().permitAll();
-
-//		http
-//				.formLogin()
-//				.loginPage("/signin/signIn.html")
-//				.failureUrl("/errors/error.html")
-//				.and()
-//				.logout()
-//				.logoutSuccessUrl("/aboutUs/about.html");
+				.anyRequest().authenticated();
+		
+		http.formLogin()
+				.loginPage("/login")
+				.loginProcessingUrl("/login")
+				.failureUrl("/login/failure")
+				.usernameParameter("username")
+				.passwordParameter("password")
+				.permitAll()
+			.and()
+				.logout()
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/")
+				.permitAll();
 	}
 }
