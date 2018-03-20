@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-//https://www.thymeleaf.org/doc/articles/springsecurity.html
 @ControllerAdvice
 public class ErrorController {
 

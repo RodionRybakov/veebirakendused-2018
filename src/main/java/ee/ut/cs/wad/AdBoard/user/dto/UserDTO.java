@@ -1,4 +1,4 @@
-package ee.ut.cs.wad.AdBoard.signup.dto;
+package ee.ut.cs.wad.AdBoard.user.dto;
 
 import lombok.Getter;
 import lombok.Setter;

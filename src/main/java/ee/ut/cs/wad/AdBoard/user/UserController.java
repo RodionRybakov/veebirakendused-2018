@@ -1,7 +1,8 @@
-package ee.ut.cs.wad.AdBoard.signup;
+package ee.ut.cs.wad.AdBoard.user;
 
-import ee.ut.cs.wad.AdBoard.signup.dto.UserDTO;
+import ee.ut.cs.wad.AdBoard.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,34 +10,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/signup")
-public class SignUpController {
+public class UserController {
 	
 	private static final String SIGNUP_PAGE = "signup/signup";
-	private final SignUpService signUpService;
+	private final UserService userService;
+	private final PasswordEncoder passwordEncoder;
 
 	@Autowired
-	SignUpController(SignUpService signUpService) {
-		this.signUpService = signUpService;
+	public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+		this.userService = userService;
+		this.passwordEncoder = passwordEncoder;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public String signup(Model model) {
-		model.addAttribute("greeting", "test");
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
+//	public String login(@ModelAttribute UserDTO userDTO) {
+//
+//	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String signup() {
 		return SIGNUP_PAGE;
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute UserDTO userDTO, Model model) {
 		User user = new User();
 		user.setUsername(userDTO.getUsername());
-		user.setPassword(userDTO.getPassword());
+		user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
 		user.setFirstName(userDTO.getFirstName());
 		user.setLastName(userDTO.getLastName());
 		user.setEmail(userDTO.getEmail());
 		
 		try {
-			signUpService.addUser(user);
+			userService.addUser(user);
 			model.addAttribute("successMessage", "You were successfully registered");
 		} catch (UnsupportedOperationException e) {
 			model.addAttribute("errorMessage", e.getMessage());

@@ -1,5 +1,5 @@
 package ee.ut.cs.wad.AdBoard.application.config;
-//https://www.thymeleaf.org/doc/articles/springsecurity.html
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,7 +12,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		String[] resources = {"/","/home","/findWork","/signIn","/signup","/about","/offerWork", "/css/**", "/js/**"};
+		String[] resources = {"/", "/signup", "/css/**", "/js/**"};
 		
 		http.cors().and().csrf().disable();
 		http.authorizeRequests()
