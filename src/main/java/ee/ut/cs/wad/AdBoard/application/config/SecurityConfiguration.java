@@ -28,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		String[] resources = {"/", "/signup", "/img/**", "/css/**", "/js/**", "/webjars/**"};
+		String[] resources = {"/", "/signup", "/offers", "/img/**", "/css/**", "/js/**", "/webjars/**"};
 		
 		http.cors().and().csrf().disable();
 		http.authorizeRequests()
@@ -57,7 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //		auth.jdbcAuthentication()
 //				.dataSource(dataSource)
 //				.passwordEncoder(passwordEncoder())
-//				.usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username=?")
+//				.usersByUsernameQuery("SELECT username, password FROM users WHERE username=?")
 //				.authoritiesByUsernameQuery("SELECT username, role FROM user_roles WHERE username=?");
 		
 	}
