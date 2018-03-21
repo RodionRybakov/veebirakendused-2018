@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:fragment="htmlhead">
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -10,11 +10,12 @@
 	<title th:text="${title}">(title)</title>
 	
 	<link rel="shortcut icon" th:href="@{/img/favicon.ico}"/>
-	<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet">
-	<link th:href="@{webjars/font-awesome/5.0.6/svg-with-js/css/fa-svg-with-js.css}" rel="stylesheet">
-	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+	<!--<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}">-->
+	<!--<link rel="stylesheet" th:href="@{/webjars/font-awesome/5.0.6/svg-with-js/css/fa-svg-with-js.css}">-->
 	
-	<link rel="stylesheet" th:href="@{css/style.css}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
@@ -31,9 +32,9 @@
 				</div>
 				<div class="collapse navbar-collapse" id="navbar-collapse-2">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/">Home</a></li>
+						<li><a th:href="@{/}">Home</a></li>
 						<li><a href="#">About Us</a></li>
-						<li><a href="/signup">Register</a></li>
+						<li sec:authorize="isAuthenticated()"><a th:href="@{/signup}">Register</a></li>
 						<li>
 							<a class="btn btn-default btn-outline btn-circle" data-toggle="collapse" href="#nav-collapse2"
 							   aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
@@ -65,13 +66,15 @@
 		</div>
 	</div>
 	
-	<script th:src="@{webjars/jquery/3.3.1/jquery.min.js}"></script>
-	<script th:src="@{webjars/popper.js/1.12.9/popper.min.js}"></script>
-	<script th:src="@{webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-	<script th:src="@{webjars/font-awesome/5.0.6/svg-with-js/js/fontawesome-all.min.js}"></script>
+	<!--<script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>-->
+	<!--<script th:src="@{/webjars/popper.js/1.12.9/popper.min.js}"></script>-->
+	<!--<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>-->
+	<!--<script th:src="@{/webjars/font-awesome/5.0.6/svg-with-js/js/fontawesome-all.min.js}"></script>-->
 	
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
 </div>
 
 </body>

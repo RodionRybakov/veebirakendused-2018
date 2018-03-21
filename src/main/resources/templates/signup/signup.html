@@ -1,74 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="layout :: htmlhead" th:with="title='AdBoard HomePage'"></head>
+<head th:include="layout :: htmlhead" th:with="title='Sign Up | Search4Work'"></head>
 
 <body>
-<div th:replace="layout :: navbar">(navbar)</div>
+<div th:include="layout :: navbar">(navbar)</div>
 
 <div class="container">
 	<div class="row">
-		<div class="span8">
-			<form action="" method="post" id="fileForm" role="form">
-				<fieldset>
-					
-					<div class="form-group">
-						<label for="firstname"><span class="req">*</span> First name: </label>
-						<input class="form-control" type="text" name="firstName" id="txt" onkeyup="validate(this)"
-							   required/>
-						<div id="errFirst"></div>
+		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			<form method="post" id="fileForm" role="form">
+				<div th:if="${successMessage != null}" class="alert alert-success" role="alert" th:text="${successMessage}"></div>
+				<div th:if="${errorMessage != null}" class="alert alert-danger" role="alert" th:text="${errorMessage}"></div>
+				
+				<h2>Feel free to Sign Up
+					<small>It's free.</small>
+				</h2>
+				<hr>
+				<div class="form-group">
+					<input required type="text" name="username" id="usernameSignUp" class="form-control input-lg"
+						   placeholder="Username">
+				</div>
+				<div class="form-group">
+					<input required type="email" name="email" id="email" class="form-control input-lg"
+						   placeholder="Email Address">
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input required type="text" name="firstName" id="firstName" class="form-control input-lg"
+								   placeholder="First Name">
+						</div>
 					</div>
-					
-					<div class="form-group">
-						<label for="lastname"><span class="req">* </span> Last name: </label>
-						<input class="form-control" type="text" name="lastName" id="txt" onkeyup="validate(this)"
-							   required/>
-						<div id="errLast"></div>
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input required type="text" name="lastName" id="lastName" class="form-control input-lg"
+								   placeholder="Last Name">
+						</div>
 					</div>
-					
-					<div class="form-group">
-						<label for="username"><span class="req">* </span> User name:</label>
-						<input class="form-control" type="text" name="username" id="txt" onkeyup="validate(this)"
-							   required/>
-						<div id="errLast"></div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input required type="password" name="password" id="passwordSignUp" class="form-control input-lg"
+								   placeholder="Password" minlength="6">
+						</div>
 					</div>
-					
-					<div class="form-group">
-						<label for="email"><span class="req">* </span> Email Address: </label>
-						<input class="form-control" required type="text" name="email" id="email"
-							   onchange="email_validate(this.value);"/>
-						<div class="status" id="status"></div>
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input required type="password" name="passwordConfirmation" id="passwordConfirmation"
+								   class="form-control input-lg" placeholder="Confirm Password">
+						</div>
 					</div>
-					
-					
-					<div class="form-group">
-						<label for="password"><span class="req">* </span> Password: </label>
-						<input required name="password" type="password" class="form-control inputpass" minlength="6"
-							   maxlength="32" id="pass1"/> </p>
-						
-						<label for="password"><span class="req">* </span> Password Confirm: </label>
-						<input required name="password" type="password" class="form-control inputpass" minlength="6"
-							   maxlength="32" id="pass2"
-							   onkeyup="checkPass(); return false;"/>
-						<span id="confirmMessage" class="confirmMessage"></span>
-					</div>
-					
-					<div class="form-group">
-						
-						<input type="hidden" value="<?php //echo $date_entered; ?>" name="dateregistered">
-						<input type="hidden" value="0" name="activate"/>
-						<hr>
-					</div>
-					
-					<div class="form-group">
-						<input class="btn btn-success" type="submit" name="submit_reg" value="Register">
-					</div>
-				</fieldset>
+				</div>
+				
+				<input id="register" type="submit" value="Register" class="btn btn-primary btn-block btn-lg">
 			</form>
 		</div>
 	</div>
 </div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>
-<script th:href="@{/js/registrationForm.js}"></script>
+<script th:src="@{/js/signup.js}"></script>
 </body>
 </html>

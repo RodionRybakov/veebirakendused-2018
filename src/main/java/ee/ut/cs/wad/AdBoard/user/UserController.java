@@ -15,17 +15,21 @@ public class UserController {
 	private static final String HOME_PAGE = "home/home";
 	private static final String SIGNUP_PAGE = "signup/signup";
 	private final UserService userService;
+	private final SecurityService securityService;
 	private final PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+	public UserController(UserService userService, SecurityService securityService, PasswordEncoder passwordEncoder) {
 		this.userService = userService;
+		this.securityService = securityService;
 		this.passwordEncoder = passwordEncoder;
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@ModelAttribute UserDTO userDTO) {
-		return HOME_PAGE;
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model model, String error, String logout) {
+		if (error != null) model.addAttribute("error", "Your username and password is invalid.");
+		if (logout != null) model.addAttribute("message", "You have been logged out successfully.");
+		return "signin/signin";
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -45,6 +49,7 @@ public class UserController {
 		try {
 			userService.addUser(user);
 			model.addAttribute("successMessage", "You were successfully registered");
+			securityService.autologin(userDTO.getUsername(), userDTO.getPassword());
 		} catch (UnsupportedOperationException e) {
 			model.addAttribute("errorMessage", e.getMessage());
 		}

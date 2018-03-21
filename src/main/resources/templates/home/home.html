@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en">
-<head th:include="layout :: htmlhead" th:with="title='AdBoard HomePage'"></head>
+<head th:include="layout :: htmlhead" th:with="title='Search4Work'"></head>
 
 <body>
 <div th:include="layout :: navbar">(navbar)</div>
 
+
+<div th:if="${param.error}" class="alert alert-error">
+	Invalid username and password.
+</div>
+<div th:if="${param.logout}" class="alert alert-success">
+	You have been logged out.
+</div>
+
 <div class="container">
-	<table class="table table-borderless">
-		<tbody>
-		<tr>
-			<td align="middle"><h3>Job for a day or a year</h3></td>
-			<td align="middle"><h3>Thousands of workers search every day</h3></td>
-		</tr>
-		<tr>
-			<td align="middle"><a href="/templates/work/work.html" class="btn btn-lg btn-success">I want to work <i
-					class="fas fa-arrow-circle-up"></i></a></td>
-			<td align="middle"><a href="/templates/work/work.html" class="btn btn-lg btn-info">I need workers <i
-					class="fas fa-arrow-circle-down"></i></a></td>
-		</tr>
-		</tbody>
-	</table>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6 text-center">
+			<h3>Job for a day or a year</h3>
+			<a href="/offers" class="btn btn-lg btn-success">I want to work <i class="fas fa-arrow-circle-up"></i></a>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 text-center">
+			<h3>Thousands of workers search every day</h3>
+			<a href="/offers" class="btn btn-lg btn-info">I need workers <i class="fas fa-arrow-circle-down"></i></a>
+		</div>
+	</div>
 </div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>
