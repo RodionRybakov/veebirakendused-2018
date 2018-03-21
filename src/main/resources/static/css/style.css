@@ -62,20 +62,22 @@
 		padding-left: 15px;
 		padding-right: 15px;
 	}
-	
+
 	.navbar .nav-collapse {
 		margin: 7.5px auto;
 		padding: 0;
 	}
-	
+
 	.navbar .nav-collapse .navbar-form {
 		margin: 0;
 	}
-	
+
 	.nav-collapse > li {
 		float: none;
 	}
 }
+
+/**/
 
 /*Front page table css*/
 .table-borderless > tbody > tr > td,
@@ -86,6 +88,8 @@
 .table-borderless > thead > tr > th {
 	border: none;
 }
+
+/**/
 
 /*Registration form css*/
 fieldset {
@@ -112,5 +116,22 @@ span.req {
 	font-size: 112%;
 }
 
-/**/
+/*Background*/
+body {
+	background: linear-gradient(132deg, #ec5218, #42d4f4);
+	background-size: 800% 800%;
+	animation: BackgroundGradient 30s ease infinite;
+}
 
+@keyframes BackgroundGradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+/**/
