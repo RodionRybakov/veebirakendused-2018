@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en">
 <head th:include="layout :: htmlhead" th:with="title='Search4Work'"></head>
 
-<body>
+<body style="    margin:0;
+    height:100%;">
 <div th:include="layout :: navbar">(navbar)</div>
 
 
@@ -13,8 +14,12 @@
 	You have been logged out.
 </div>
 
-<div class="container">
-	<div class="row">
+
+<div style="background-image: url(/img/sdt.png); height: 100%;background-position: center; background-repeat: no-repeat;background-size: cover;">
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+	<div class="container">
+	<div class="row" >
 		<div class="col-xs-12 col-sm-6 col-md-6 text-center">
 			<h3>Job for a day or a year</h3>
 			<a th:href="@{/offers}" class="btn btn-lg btn-success">I want to work <i class="fas fa-arrow-circle-up"></i></a>
@@ -24,6 +29,10 @@
 			<a th:href="@{/offers}" class="btn btn-lg btn-info">I need workers <i class="fas fa-arrow-circle-down"></i></a>
 		</div>
 	</div>
+</div>
+	<br/><br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/><br/><br/>
+
 </div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>

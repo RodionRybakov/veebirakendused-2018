@@ -36,7 +36,7 @@ public class UserController {
 	public String signup() {
 		return SIGNUP_PAGE;
 	}
-	
+
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute UserDTO userDTO, Model model) {
 		User user = new User();

@@ -28,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		String[] resources = {"/", "/signup", "/offers", "/img/**", "/css/**", "/js/**", "/webjars/**"};
+		String[] resources = {"/","/about" ,"/signup", "/offers", "/img/**", "/css/**", "/js/**", "/webjars/**"};
 		
 		http.cors().and().csrf().disable();
 		http.authorizeRequests()
