@@ -1,43 +1,27 @@
-<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:include="layout :: htmlhead" th:with="title='AdBoard HomePage'"></head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en">
+<head th:include="layout :: htmlhead" th:with="title='Search4Work'"></head>
 
 <body>
 <div th:include="layout :: navbar">(navbar)</div>
 
-<div class="jumbotron">
-	<div class="container">
-		<h1 class="display-3">Hello, world!</h1>
-		<p>This is a template for a simple marketing or informational website. It includes a large callout called a
-			jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-			unique.</p>
-		<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-	</div>
+
+<div th:if="${param.error}" class="alert alert-error">
+	Invalid username and password.
+</div>
+<div th:if="${param.logout}" class="alert alert-success">
+	You have been logged out.
 </div>
 
 <div class="container">
-	<!-- Example row of columns -->
 	<div class="row">
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-				condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-				euismod. Donec sed odio dui. </p>
-			<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+		<div class="col-xs-12 col-sm-6 col-md-6 text-center">
+			<h3>Job for a day or a year</h3>
+			<a th:href="@{/offers}" class="btn btn-lg btn-success">I want to work <i class="fas fa-arrow-circle-up"></i></a>
 		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-				condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-				euismod. Donec sed odio dui. </p>
-			<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-				porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-				fermentum massa justo sit amet risus.</p>
-			<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+		<div class="col-xs-12 col-sm-6 col-md-6 text-center">
+			<h3>Thousands of workers search every day</h3>
+			<a th:href="@{/offers}" class="btn btn-lg btn-info">I need workers <i class="fas fa-arrow-circle-down"></i></a>
 		</div>
 	</div>
 </div>
