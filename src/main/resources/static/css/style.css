@@ -76,3 +76,21 @@
 		float: none;
 	}
 }
+
+/* Home page button centralize css*/
+#buttonCenter {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+/* About us home page Image style */
+#imageStyle {
+	width: 20%;
+	height: auto;
+	align-items: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+/**/
