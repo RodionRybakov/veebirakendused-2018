@@ -49,7 +49,7 @@ public class UserController {
 		try {
 			userService.addUser(user);
 			model.addAttribute("successMessage", "You were successfully registered");
-			securityService.autologin(userDTO.getUsername(), userDTO.getPassword());
+//			securityService.autologin(userDTO.getUsername(), userDTO.getPassword());
 		} catch (UnsupportedOperationException e) {
 			model.addAttribute("errorMessage", e.getMessage());
 		}

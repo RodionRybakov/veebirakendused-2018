@@ -1,21 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en">
-<head th:include="layout :: htmlhead" th:with="title='Search4Work'">
-</head>
-<style>
-
-</style>
+<head th:include="layout :: htmlhead" th:with="title='Search4Work'"></head>
 
 <body>
 <div th:include="layout :: navbar">(navbar)</div>
 
-</div>
-
 <div class="container" >
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-
         <div>
-            <img th:src="@{/img/icon.jpg}" id="imageStyle" />
+            <img th:src="@{/img/icon.png}" id="imageStyle"/>
         </div>
         <div class="row">
             <h1 class="text-center"> About Search4Work </h1>
@@ -34,7 +27,6 @@
 </div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>
-
 </body>
 </html>
 

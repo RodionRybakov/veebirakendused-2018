@@ -24,6 +24,9 @@ public class User {
 	private String password;
 	
 	@NotNull
+	private int active;
+	
+	@NotNull
 	private String firstName;
 	
 	@NotNull

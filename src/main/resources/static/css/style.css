@@ -1,4 +1,4 @@
-/*Navigation bar css*/
+/* Navigation bar */
 .navbar-brand {
 	position: relative;
 	z-index: 2;
@@ -84,6 +84,7 @@
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
 }
+
 /* About us home page Image style */
 #imageStyle {
 	width: 20%;
@@ -93,4 +94,22 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-/**/
+
+/* Background gradient */
+body {
+	background: linear-gradient(132deg, #ec5218, #42d4f4);
+	background-size: 5000% 5000%;
+	animation: BackgroundGradient 30s ease infinite;
+}
+
+@keyframes BackgroundGradient {
+	0% {
+		background-position: 0 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0 50%;
+	}
+}

@@ -10,25 +10,27 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+
+import javax.sql.DataSource;
 
 @EnableWebSecurity
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
-	private final UserDetailsService userDetailsService;
+	private final DataSource dataSource;
 	
 	@Autowired
-	public SecurityConfiguration(@Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService) {
-		this.userDetailsService = userDetailsService;
+	public SecurityConfiguration(@Qualifier("dataSource") DataSource dataSource) {
+		this.dataSource = dataSource;
 	}
-	
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		String[] resources = {"/","/about" ,"/signup", "/offers", "/img/**", "/css/**", "/js/**", "/webjars/**"};
+		String[] resources = {"/", "/signup", "/about", "/offers", "/img/**", "/css/**", "/js/**", "/webjars/**"};
 		
 		http.cors().and().csrf().disable();
 		http.authorizeRequests()
@@ -38,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and()
 			.formLogin()
 				.loginPage("/login")
-				.loginProcessingUrl("/login")
+//				.loginProcessingUrl("/login")
 //				.failureUrl("/login/failure")
 				.usernameParameter("username")
 				.passwordParameter("password")
@@ -53,12 +55,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-//		auth.jdbcAuthentication()
-//				.dataSource(dataSource)
-//				.passwordEncoder(passwordEncoder())
-//				.usersByUsernameQuery("SELECT username, password FROM users WHERE username=?")
-//				.authoritiesByUsernameQuery("SELECT username, role FROM user_roles WHERE username=?");
+//		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+		auth.jdbcAuthentication()
+				.usersByUsernameQuery("SELECT username, password, active FROM users WHERE username=?")
+				.authoritiesByUsernameQuery("SELECT username, name FROM users INNER JOIN user_role ON (users.id = user_id) INNER JOIN roles ON (roles.id = role_id) WHERE username=?")
+				.dataSource(dataSource)
+				.passwordEncoder(passwordEncoder());
 		
 	}
 	
@@ -71,5 +73,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
+	}
+	
+	@Bean
+	public AuthenticationSuccessHandler successHandler() {
+		SimpleUrlAuthenticationSuccessHandler handler = new SimpleUrlAuthenticationSuccessHandler();
+		handler.setUseReferer(true);
+		return handler;
 	}
 }
