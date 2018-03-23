@@ -16,12 +16,10 @@ import java.util.Set;
 public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	private final UserRepository userRepository;
-	private final RoleRepository roleRepository;
 	
 	@Autowired
-	public UserDetailsServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+	public UserDetailsServiceImpl(UserRepository userRepository) {
 		this.userRepository = userRepository;
-		this.roleRepository = roleRepository;
 	}
 	
 	@Override
@@ -33,7 +31,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		for (Role role : user.getRoles()){
 			grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
 		}
-		
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
 	}
 }

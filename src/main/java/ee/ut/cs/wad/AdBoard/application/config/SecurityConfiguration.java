@@ -10,22 +10,22 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
-
-import javax.sql.DataSource;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
 @EnableWebSecurity
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
-	private final DataSource dataSource;
+	private final UserDetailsService userDetailsService;
 	
 	@Autowired
-	public SecurityConfiguration(@Qualifier("dataSource") DataSource dataSource) {
-		this.dataSource = dataSource;
+	public SecurityConfiguration(@Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService) {
+		this.userDetailsService = userDetailsService;
 	}
 	
 	@Override
@@ -40,28 +40,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and()
 			.formLogin()
 				.loginPage("/login")
-//				.loginProcessingUrl("/login")
-//				.failureUrl("/login/failure")
-				.usernameParameter("username")
-				.passwordParameter("password")
 				.successHandler(new RefererRedirectionAuthenticationSuccessHandler())
 				.permitAll()
 				.and()
 			.logout()
-//				.logoutUrl("/logout")
-//				.logoutSuccessUrl("/")
 				.permitAll();
 	}
 	
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-		auth.jdbcAuthentication()
-				.usersByUsernameQuery("SELECT username, password, active FROM users WHERE username=?")
-				.authoritiesByUsernameQuery("SELECT username, name FROM users INNER JOIN user_role ON (users.id = user_id) INNER JOIN roles ON (roles.id = role_id) WHERE username=?")
-				.dataSource(dataSource)
-				.passwordEncoder(passwordEncoder());
-		
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 	
 	@Bean
@@ -80,5 +68,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		SimpleUrlAuthenticationSuccessHandler handler = new SimpleUrlAuthenticationSuccessHandler();
 		handler.setUseReferer(true);
 		return handler;
+	}
+	
+	@Bean
+	public SpringSecurityDialect securityDialect() {
+		return new SpringSecurityDialect();
 	}
 }
