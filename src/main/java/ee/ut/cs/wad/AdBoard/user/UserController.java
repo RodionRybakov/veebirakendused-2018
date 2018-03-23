@@ -9,36 +9,38 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class UserController {
 	
-	private static final String HOME_PAGE = "home/home";
-	private static final String SIGNUP_PAGE = "signup/signup";
+	private static final String LOGIN_PAGE = "user/login";
+	private static final String SIGNUP_PAGE = "user/signup";
+	private static final String ACCOUNT_PAGE = "user/account";
+	
 	private final UserService userService;
-	private final SecurityService securityService;
 	private final PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public UserController(UserService userService, SecurityService securityService, PasswordEncoder passwordEncoder) {
+	public UserController(UserService userService, PasswordEncoder passwordEncoder) {
 		this.userService = userService;
-		this.securityService = securityService;
 		this.passwordEncoder = passwordEncoder;
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model, String error, String logout) {
 		if (error != null) model.addAttribute("error", "Your username and password is invalid.");
-		if (logout != null) model.addAttribute("message", "You have been logged out successfully.");
-		return "signin/signin";
+		if (logout != null) model.addAttribute("logout", "You have been logged out successfully.");
+		return LOGIN_PAGE;
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signup() {
 		return SIGNUP_PAGE;
 	}
-	
+
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String addUser(@ModelAttribute UserDTO userDTO, Model model) {
+	public String addUser(@ModelAttribute UserDTO userDTO, Model model, HttpServletRequest request) {
 		User user = new User();
 		user.setUsername(userDTO.getUsername());
 		user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
@@ -48,11 +50,16 @@ public class UserController {
 		
 		try {
 			userService.addUser(user);
-			model.addAttribute("successMessage", "You were successfully registered");
-			securityService.autologin(userDTO.getUsername(), userDTO.getPassword());
+			model.addAttribute("success", "You were successfully registered");
+			userService.authenticateUserAndSetSession(userDTO.getUsername(), userDTO.getPassword(), request);
 		} catch (UnsupportedOperationException e) {
-			model.addAttribute("errorMessage", e.getMessage());
+			model.addAttribute("error", e.getMessage());
 		}
 		return SIGNUP_PAGE;
+	}
+	
+	@RequestMapping(value = "/account", method = RequestMethod.GET)
+	public String account() {
+		return ACCOUNT_PAGE;
 	}
 }

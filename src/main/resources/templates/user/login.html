@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xml:lang="en" lang="en">
 <head th:include="layout :: htmlhead" th:with="title='Sign In | Search4Work'"></head>
 
 <body>
-<!--<div th:include="layout :: navbar">(navbar)</div>-->
+<div th:include="layout :: navbar">(navbar)</div>
 
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 			<form method="post" id="fileForm" role="form">
-				<div th:if="${successMessage != null}" class="alert alert-success" role="alert" th:text="${successMessage}"></div>
-				<div th:if="${errorMessage != null}" class="alert alert-danger" role="alert" th:text="${errorMessage}"></div>
+				<div th:if="${logout != null}" class="alert alert-success" role="alert" th:text="${logout}"></div>
+				<div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
 				
 				<h2>Sign In</h2>
 				<hr>
