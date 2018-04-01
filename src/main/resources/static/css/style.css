@@ -179,3 +179,13 @@ body {
     text-transform: capitalize;
     text-align: center;
 }
+
+/* Style for add adv */
+   .mystyle {
+    width: 100%;
+    padding: 25px;
+    background-color: grey;
+    color: white;
+    font-size: 25px;
+    box-sizing: border-box;
+}

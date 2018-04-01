@@ -17,7 +17,7 @@ function showDLG(){
 
 }
 
-/////////// Upload image to avatar
+/* Upload image to avatar */
 function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -31,4 +31,49 @@ function readURL(input) {
 
             reader.readAsDataURL(input.files[0]);
         }
-    }
+}
+
+/*
+//Add job
+function addAdv() {
+    var node = document.createElement("LI");
+    //var textnode = document.createTextNode("Water");
+    "${location}".textContent("awd");
+    var textnode = document.createTextNode("${location}");
+
+    node.appendChild(textnode);
+    document.getElementById("JobList").appendChild(node);
+}
+*/
+/*
+// Add job
+function addAdv() {
+ var element = document.getElementById("location");
+    var node = document.createElement("LI");
+    var y = document.getElementById("loc");
+    var location = document.createTextNode(y.value);
+   	var hr = document.createElement("HR");
+    var br = document.createElement("BR")
+	var z =  document.getElementById("description");
+    var desc = document.createTextNode(z.value)
+
+    var x =document.getElementById("type_of_job");
+    var head =document.createTextNode(x.value);
+
+
+if(location.length != 0 && head.length != 0 && desc.length != 0) {
+    node.classList.add("mystyle")
+    //node.appendChild(location);
+    //node.appendChild(br);
+    node.appendChild(head);
+    node.appendChild(br);
+    node.appendChild(desc);
+
+
+    document.getElementById("JobList").appendChild(node);
+    node.appendChild(hr);
+
+   		// do something
+	}
+}
+*/

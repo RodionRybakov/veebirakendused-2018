@@ -25,9 +25,16 @@
             </optgroup>
         </select>
         <a href="#" class="btn btn-primary btn-success">Search <span class="glyphicon glyphicon-refresh"></span></a>
+        <!--<a href="#"  onclick="addAdv()" class="btn btn-success pull-right">Add</a>-->
+
+        <ul id="JobList">
+
+        </ul>
+
     </div>
 </div>
 
+<script th:src="@{/js/account.js}"></script>
 <div th:include="layout :: footer" id="footer">(footer)</div>
 </body>
 </html>

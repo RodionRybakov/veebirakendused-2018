@@ -103,13 +103,13 @@
 						<div class="col-sm-12">
 							<label for="passwd" class="control-label">Password:</label>
 							<div class="">
-								<input type="password" class="form-control" id="passwd">
+								<input type="text" class="form-control" id="passwd">
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<label for="confirm" class="control-label">Confirm:</label>
 							<div class="">
-								<input type="password" class="form-control" id="confirm">
+								<input type="text" class="form-control" id="confirm">
 							</div>
 						</div>
 						<div class="col-sm-12">
@@ -137,8 +137,45 @@
 					</div>
 				</div>
 			</form>
+
+			<h3> Add job advertisement</h3>
+			<form class="ng-pristine ng-valid" role="form">
+				<div class="row">
+					<div class="col-sm-12">
+						<label for="location" class="col-sm-12 control-label">Location </label>
+						<div class="">
+							<input type="text" class="form-control" id="location">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">
+						<label for="type_of_job" class="col-sm-12 control-label">Type of job </label>
+						<div class="">
+							<input type="text" class="form-control" id="type_of_job">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">
+						<label for="description" class="col-sm-12 control-label">Description:</label>
+						<div class="">
+							<textarea rows="5" class="form-control" id="description"></textarea>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<div class="btn-div">
+							<a href="#"  onclick="addAdv()" class="btn btn-success pull-right">Add</a>
+						</div>
+					</div>
+				</div>
+			</form>
 		</section>
 	</div>
+
+
 </div>
 
 <br/><br/><br/>
