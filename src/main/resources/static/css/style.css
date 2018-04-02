@@ -1,4 +1,8 @@
 /* Navigation bar */
+.navbar {
+	margin-bottom: 0;
+}
+
 .navbar-brand {
 	position: relative;
 	z-index: 2;
@@ -95,25 +99,13 @@
 	margin-right: auto;
 }
 
-/* Background gradient */
-body {
-	background: linear-gradient(132deg, #ec5218, #42d4f4);
-	background-size: 5000% 5000%;
-	animation: BackgroundGradient 30s ease infinite;
+/* Background */
+#particles-js canvas {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
 }
-
-@keyframes BackgroundGradient {
-	0% {
-		background-position: 0 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0 50%;
-	}
-}
-
 
 /* Accaunt dialog box */
 #dlgbox{

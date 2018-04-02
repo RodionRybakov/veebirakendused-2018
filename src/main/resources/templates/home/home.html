@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xml:lang="en" lang="en">
 <head th:include="layout :: htmlhead" th:with="title='Search4Work'"></head>
-<div th:include="layout :: navbar">(navbar)</div>
 
 <body>
+<div th:include="layout :: navbar">(navbar)</div>
 <div th:if="${param.error}" class="alert alert-error">
 	Invalid username and password.
 </div>
