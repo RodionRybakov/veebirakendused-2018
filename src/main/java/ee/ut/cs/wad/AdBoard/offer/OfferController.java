@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class OfferController {
 	
-	private static final String OFFERS_PAGE = "offer/offer";
+	private static final String OFFERS_PAGE = "offer/offers";
 	private static final String ADD_OFFER_PAGE = "offer/add";
 	
 	private final OfferService offerService;
