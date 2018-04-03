@@ -4,7 +4,7 @@ if (typeof($.fn.modal) === 'undefined') {
 	document.write('<script src="/webjars/font-awesome/5.0.8/svg-with-js/js/fontawesome-all.min.js"><\/script>');
 }
 
-$(document).ready(function () {
+$(function () {
 	var bodyColor = $('body').css('color');
 	if (bodyColor != 'rgb(51, 51, 51)') {
 		$("head").prepend('<link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css">');

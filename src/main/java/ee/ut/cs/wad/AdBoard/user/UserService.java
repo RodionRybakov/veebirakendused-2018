@@ -25,7 +25,10 @@ public class UserService {
 	private final UserDetailsService userDetailsService;
 	
 	@Autowired
-	public UserService(UserRepository userRepository, RoleRepository roleRepository, AuthenticationManager authenticationManager, @Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService) {
+	public UserService(UserRepository userRepository,
+					   RoleRepository roleRepository,
+					   AuthenticationManager authenticationManager,
+					   @Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService) {
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;
 		this.authenticationManager = authenticationManager;
