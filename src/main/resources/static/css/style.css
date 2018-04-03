@@ -81,6 +81,10 @@
     }
 }
 
+.container-main {
+	margin-top: 30px;
+}
+
 /* Home page button centralize css*/
 #buttonCenter {
     position: absolute;

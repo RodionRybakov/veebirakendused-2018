@@ -6,9 +6,9 @@ $(function () {
 	
 	pass2.on("keyup change", function () {
 		if (pass1.val() === pass2.val()) {
-			$(this).css({'background-color' : goodColor});
+			$(this).css({'background-color': goodColor});
 		} else {
-			$(this).css({'background-color' : badColor});
+			$(this).css({'background-color': badColor});
 		}
 	});
 	
