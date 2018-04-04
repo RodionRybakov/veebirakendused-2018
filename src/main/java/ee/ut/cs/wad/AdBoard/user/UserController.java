@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -20,6 +22,7 @@ public class UserController {
 	private static final String LOGIN_PAGE = "user/login";
 	private static final String SIGNUP_PAGE = "user/signup";
 	private static final String ACCOUNT_PAGE = "user/account";
+	private static final String ADMIN_PAGE = "user/admin";
 	
 	private final UserService userService;
 	private final UserRepository userRepository;
@@ -68,6 +71,12 @@ public class UserController {
 	@RequestMapping(value = "/account", method = RequestMethod.GET)
 	public String account(Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		if (auth.getName().equals("admin")) {
+			model.addAttribute("total", userRepository.getAll());
+			return ADMIN_PAGE;
+		}
+		
 		User owner = userRepository.findUserByUsername(auth.getName());
 		model.addAttribute("offers", offerRepository.findOffersByOwner(owner));
 		return ACCOUNT_PAGE;

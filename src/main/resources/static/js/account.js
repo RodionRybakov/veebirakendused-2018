@@ -5,10 +5,6 @@ $(function () {
 		
 		switch ($(this).attr('id')) {
 			case 'offerView':
-				// $(this).click(function () {
-				// 	$('#offerPreview').slideToggle('slow');
-				// });
-				
 				$.ajax({
 					type: 'POST',
 					url: '/offers/get',
@@ -24,7 +20,6 @@ $(function () {
 										'<b>Phone: </b> ' + json['phone'] + '<br>' +
 										'<b>Address: </b> ' + json['address'] + '<br>' +
 									'</p>'
-								// '</div>'
 							);
 						}
 					]
