@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xml:lang="en" lang="en">
+<head th:include="layout :: htmlhead" th:with="title='Search4Work'"></head>
+
+<body>
+<div th:include="layout :: navbar">(navbar)</div>
+
+<div class="container container-main">
+	<div class="row" id="searchBar">
+		<div class="col-md-8 col-md-offset-3">
+			<select class="selectpicker" title="Location" multiple>
+				<option>Tallinn</option>
+				<option>Tartu</option>
+				<option>Pärnu</option>
+			</select>
+			<select class="selectpicker" title="Type of work" multiple>
+				<optgroup label="IT">
+					<option>Programmer</option>
+					<option>Designer</option>
+					<option>System administrator</option>
+				</optgroup>
+				<optgroup label="Building">
+					<option>Painter</option>
+					<option>Builder</option>
+					<option>Welder</option>
+				</optgroup>
+			</select>
+			<a href="#" class="btn btn-primary btn-success">Search <span class="glyphicon glyphicon-refresh"></span></a>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="crane-grid-listing-block">
+				<div class="row" th:each="offer : ${offers}">
+					<div class="col-md-12">
+						<div class="crane-grid-listing clearfix">
+							<div class="col-md-3 crane-image-block ">
+								<div class="crane-list-img">
+									<img class="img-responsive" th:src="@{/img/offer_unknown.png}"/>
+								</div>
+							</div>
+							<div class="col-md-7">
+								<div class="crane-list-content">
+									<div class="crane-title">
+										<h3 th:text="${offer.title}">(title)</h3>
+									</div>
+									<div class="crane-phone">
+										<ul class="list-inline">
+											<li><i class="fa fa-phone"></i>  <span th:text="${offer.phone}">(phone)</span></li>
+										</ul>
+									</div>
+									<div class="crane-address">
+										<ul class="list-inline">
+											<li><i class="fa fa-map-marker"></i></li>
+											<li th:text="${offer.address}">(address)</li>
+										</ul>
+									</div>
+									<div class="crane-category">
+										<!--<ul class="list-inline">-->
+											<!--<li><a href="#">Cybersecurity</a></li>-->
+											<!--<li><a href="#">Crane Towing Service</a></li>-->
+											<!--<li><a href="#">Salary starting from 10 000$</a></li>-->
+											<!--<li><a href="#">More...</a></li>-->
+										<!--</ul>-->
+										<p title="description" th:text="${offer.description}">(description)</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-2 padding-b-10 ">
+								<div class="margin-t-40 hidden-xs"></div>
+								<button type="button" class="btn btn-success btn-block"><span
+										class="glyphicon glyphicon-earphone"></span> Call Now
+								</button>
+								<button type="button" class="btn btn-warning btn-block"><span
+										class="glyphicon glyphicon-briefcase"></span> Booking
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>

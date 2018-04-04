@@ -1,5 +1,6 @@
 package ee.ut.cs.wad.AdBoard.user;
 
+import ee.ut.cs.wad.AdBoard.offer.Offer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,4 +39,7 @@ public class User {
 	@ManyToMany
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
+	
+	@OneToMany(mappedBy = "owner")
+	private Set<Offer> offers;
 }
