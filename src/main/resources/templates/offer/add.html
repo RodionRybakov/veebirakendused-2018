@@ -12,7 +12,7 @@
                 <div th:if="${success != null}" class="alert alert-success" role="alert" th:text="${success}"></div>
                 <div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
 
-                <h2>Add new advertisement</h2>
+                <h2>Add new offer</h2>
                 <hr>
                 <div class="form-group">
                     <input required type="text" name="title" class="form-control input-lg" placeholder="Title">
@@ -23,33 +23,33 @@
                 <div class="form-group">
                     <input required type="text" name="address" class="form-control input-lg" placeholder="Address">
                 </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <select class="selectpicker" title="Type of work" id="work" name="work" multiple>
-                                <optgroup label="IT">
-                                    <option>Programmer</option>
-                                    <option>Designer</option>
-                                    <option>System administrator</option>
-                                </optgroup>
-                                <optgroup label="Building">
-                                    <option>Painter</option>
-                                    <option>Builder</option>
-                                    <option>Welder</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <select class="selectpicker" title="City" id="city" name="city" multiple>
-                                <option>Tallinn
-                                <option>Tartu</option>
-                                <option>Pärnu</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="row">-->
+                    <!--<div class="col-xs-12 col-sm-6 col-md-6">-->
+                        <!--<div class="form-group">-->
+                            <!--<select class="selectpicker" title="Type of work" id="work" name="work" multiple>-->
+                                <!--<optgroup label="IT">-->
+                                    <!--<option>Programmer</option>-->
+                                    <!--<option>Designer</option>-->
+                                    <!--<option>System administrator</option>-->
+                                <!--</optgroup>-->
+                                <!--<optgroup label="Building">-->
+                                    <!--<option>Painter</option>-->
+                                    <!--<option>Builder</option>-->
+                                    <!--<option>Welder</option>-->
+                                <!--</optgroup>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-12 col-sm-6 col-md-6">-->
+                        <!--<div class="form-group">-->
+                            <!--<select class="selectpicker" title="City" id="city" name="city" multiple>-->
+                                <!--<option>Tallinn-->
+                                <!--<option>Tartu</option>-->
+                                <!--<option>Pärnu</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="form-group">
                     <textarea class="form-control description" name="description" placeholder="Describe here..."></textarea>
                 </div>

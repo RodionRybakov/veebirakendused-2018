@@ -34,8 +34,8 @@
 					<li><a th:href="@{/about}">About Us</a></li>
 					
 					<li sec:authorize="!isAuthenticated()"><a th:href="@{/signup}">Register</a></li>
-					<li sec:authorize="isAuthenticated()"><a th:href="@{/account}">Account</a></li>
 					<li sec:authorize="isAuthenticated()"><a th:href="@{/offers/add}">Add offer</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/account}">Account</a></li>
 
 					<li sec:authorize="!isAuthenticated()">
 						<a class="btn btn-default btn-outline btn-circle" data-toggle="collapse" href="#nav-collapse2"

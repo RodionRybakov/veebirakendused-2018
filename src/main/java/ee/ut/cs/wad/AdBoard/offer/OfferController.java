@@ -1,5 +1,7 @@
 package ee.ut.cs.wad.AdBoard.offer;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import ee.ut.cs.wad.AdBoard.offer.dto.OfferDTO;
 import ee.ut.cs.wad.AdBoard.user.User;
 import ee.ut.cs.wad.AdBoard.user.UserRepository;
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class OfferController {
@@ -59,5 +62,20 @@ public class OfferController {
 			model.addAttribute("error", e.getMessage());
 		}
 		return ADD_OFFER_PAGE;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/offers/get", method = RequestMethod.POST)
+	public String getOffer(Long offerId) throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		Offer offer = offerService.getOffer(offerId);
+		return mapper.writeValueAsString(offer);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/offers/remove", method = RequestMethod.POST)
+	public String removeOffer(Long offerId) {
+		offerService.removeOffer(offerId);
+		return "success";
 	}
 }

@@ -1,5 +1,6 @@
 package ee.ut.cs.wad.AdBoard.offer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ee.ut.cs.wad.AdBoard.user.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@Table(name = "offer")
+@Table(name = "offers")
 public class Offer {
 	
 	@Id
@@ -28,10 +29,12 @@ public class Offer {
 	private String address;
 	private String city;
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "offers_categories", joinColumns = @JoinColumn(name = "offer_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinTable(name = "offers_users", joinColumns = @JoinColumn(name = "offer_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private User owner;

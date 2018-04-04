@@ -1,7 +1,10 @@
 package ee.ut.cs.wad.AdBoard.user;
 
+import ee.ut.cs.wad.AdBoard.offer.OfferRepository;
 import ee.ut.cs.wad.AdBoard.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +22,15 @@ public class UserController {
 	private static final String ACCOUNT_PAGE = "user/account";
 	
 	private final UserService userService;
+	private final UserRepository userRepository;
+	private final OfferRepository offerRepository;
 	private final PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+	public UserController(UserService userService, UserRepository userRepository, OfferRepository offerRepository, PasswordEncoder passwordEncoder) {
 		this.userService = userService;
+		this.userRepository = userRepository;
+		this.offerRepository = offerRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
 	
@@ -59,7 +66,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/account", method = RequestMethod.GET)
-	public String account() {
+	public String account(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User owner = userRepository.findUserByUsername(auth.getName());
+		model.addAttribute("offers", offerRepository.findOffersByOwner(owner));
 		return ACCOUNT_PAGE;
 	}
 }
