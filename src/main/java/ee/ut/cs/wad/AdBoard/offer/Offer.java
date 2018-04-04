@@ -1,5 +1,6 @@
 package ee.ut.cs.wad.AdBoard.offer;
 
+import ee.ut.cs.wad.AdBoard.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,9 +28,12 @@ public class Offer {
 	private String address;
 	private String city;
 	
-	@NotNull
 	@ManyToMany
 	@JoinTable(name = "offers_categories", joinColumns = @JoinColumn(name = "offer_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories;
+	
+	@ManyToOne
+	@JoinTable(name = "offers_users", joinColumns = @JoinColumn(name = "offer_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private User owner;
 	
 }

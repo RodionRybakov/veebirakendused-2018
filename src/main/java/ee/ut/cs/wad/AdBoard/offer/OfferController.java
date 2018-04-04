@@ -1,7 +1,11 @@
 package ee.ut.cs.wad.AdBoard.offer;
 
 import ee.ut.cs.wad.AdBoard.offer.dto.OfferDTO;
+import ee.ut.cs.wad.AdBoard.user.User;
+import ee.ut.cs.wad.AdBoard.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,28 +20,37 @@ public class OfferController {
 	
 	private final OfferService offerService;
 	private final OfferRepository offerRepository;
+	private final UserRepository userRepository;
 	
 	@Autowired
-	public OfferController(OfferService offerService, OfferRepository offerRepository) {
+	public OfferController(OfferService offerService, OfferRepository offerRepository, UserRepository userRepository) {
 		this.offerService = offerService;
 		this.offerRepository = offerRepository;
+		this.userRepository = userRepository;
 	}
 	
 	@RequestMapping(value = "/offers", method = RequestMethod.GET)
 	public String getOffers(Model model) {
-//		model.addAttribute("total", offerRepository.countAllById());
 		model.addAttribute("offers", offerRepository.findAll());
 		return OFFERS_PAGE;
 	}
 	
-	@RequestMapping(value = "/add-offer", method = RequestMethod.GET)
+	@RequestMapping(value = "/offers/add", method = RequestMethod.GET)
 	public String addOffer() {
 		return ADD_OFFER_PAGE;
 	}
 	
-	@RequestMapping(value = "/add-offer", method = RequestMethod.POST)
+	@RequestMapping(value = "/offers/add", method = RequestMethod.POST)
 	public String addOffer(@ModelAttribute OfferDTO offerDTO, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User owner = userRepository.findUserByUsername(auth.getName());
+		
 		Offer offer = new Offer();
+		offer.setTitle(offerDTO.getTitle());
+		offer.setPhone(offerDTO.getPhone());
+		offer.setAddress(offerDTO.getAddress());
+		offer.setDescription(offerDTO.getDescription());
+		offer.setOwner(owner);
 		
 		try {
 			offerService.addOffer(offer);

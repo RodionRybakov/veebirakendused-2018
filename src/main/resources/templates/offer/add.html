@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xml:lang="en" lang="en">
-<head th:include="layout :: htmlhead" th:with="title='Sign In | Search4Work'"></head>
+<head th:include="layout :: htmlhead" th:with="title='Add Offer | Search4Work'"></head>
 
 <body>
 <div th:include="layout :: navbar">(navbar)</div>
-
 
 <div class="container container-main">
     <div class="row">
@@ -13,18 +12,16 @@
                 <div th:if="${success != null}" class="alert alert-success" role="alert" th:text="${success}"></div>
                 <div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
 
-                <h2>Add new advertisement
-                    <small>It's free.</small>
-                </h2>
+                <h2>Add new advertisement</h2>
                 <hr>
                 <div class="form-group">
-                    <input required type="text" name="title" id="titleaddAd" class="form-control input-lg" placeholder="Title">
+                    <input required type="text" name="title" class="form-control input-lg" placeholder="Title">
                 </div>
                 <div class="form-group">
-                    <input required type="tel" name="phone" id="phone" class="form-control input-lg" placeholder="Phone number">
+                    <input required type="tel" name="phone" class="form-control input-lg" placeholder="Phone number">
                 </div>
                 <div class="form-group">
-                    <input required type="text" name="address" id="address" class="form-control input-lg" placeholder="Address">
+                    <input required type="text" name="address" class="form-control input-lg" placeholder="Address">
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-6">
@@ -54,7 +51,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control description" placeholder="Describe here..." name="Description" id="description"></textarea>
+                    <textarea class="form-control description" name="description" placeholder="Describe here..."></textarea>
                 </div>
 
                 <div class="form-group">
@@ -69,13 +66,13 @@
                     </div>
                 </div>
 
-                <input id="addOffer" type="submit" value="Submit" class="btn btn-primary btn-block btn-lg">
+                <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg">
             </form>
         </div>
     </div>
 </div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>
-<script th:src="@{/js/addOffers.js}"></script>
+<script th:src="@{/js/addOffer.js}"></script>
 </body>
 </html>

@@ -305,3 +305,7 @@
     cursor: inherit;
     display: block;
 }
+
+#searchBar {
+    margin-bottom: 30px;
+}
