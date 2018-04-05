@@ -10,18 +10,21 @@ $(function () {
 					url: '/offers/get',
 					data: 'offerId=' + offerId,
 					success: [
+
 						function (data) {
 							var json = $.parseJSON(data);
 							$('#offerPreview').empty();
 							$('#offerPreview').append(
-								'<br><br>' +
-									'<p>' +
-										'<b>Description: </b> ' + json['description'] + '<br>' +
-										'<b>Phone: </b> ' + json['phone'] + '<br>' +
-										'<b>Address: </b> ' + json['address'] + '<br>' +
+                                     '<center>'+'<h3>'+json['title']+'</h3>'+'</center>'+
+								'<br>' +
+									'<p id = "offer_style">' +
+										'<b>&nbsp;&nbsp;&nbsp;&nbsp; Description: </b> ' + json['description'] + '<br>' +
+										'<b>&nbsp;&nbsp;&nbsp;&nbsp; Phone: </b> ' + json['phone'] + '<br>' +
+										'<b>&nbsp;&nbsp;&nbsp;&nbsp; Address: </b> ' + json['address'] + '<br>' +
 									'</p>'
 							);
 						}
+
 					]
 				});
 				break;
@@ -42,3 +45,12 @@ $(function () {
 		}
 	});
 });
+/*
+$(document).ready(function(){
+    $("#offerView").click(function(){
+        $("#myModal").modal("show");
+    });
+        $("#myModal").on('hidden.bs.modal', function () {
+    });
+});
+*/
