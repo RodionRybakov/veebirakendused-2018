@@ -45,12 +45,11 @@ $(function () {
 		}
 	});
 });
-/*
+
 $(document).ready(function(){
     $("#offerView").click(function(){
-        $("#myModal").modal("show");
+        $("#myModalEdit").modal("show");
     });
-        $("#myModal").on('hidden.bs.modal', function () {
+        $("#myModalEdit").on('hidden.bs.modal', function () {
     });
 });
-*/
