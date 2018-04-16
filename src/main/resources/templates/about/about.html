@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xml:lang="en" lang="en">
-<head th:include="layout :: htmlhead" th:with="title='About Us | Search4Work'"></head>
+<head th:include="layout :: htmlhead" th:with="title=#{title.about}"></head>
 
 <body>
 <div th:include="layout :: navbar">(navbar)</div>
@@ -8,20 +8,18 @@
 <div class="container container-main">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
         <div>
-            <img th:src="@{/img/icon.png}" id="imageStyle"/>
+            <img th:src="@{/img/icon.png}" id="about-image"/>
         </div>
         <div class="row">
-            <h1 class="text-center"> About Search4Work </h1>
-            <h4  class="text-center">Welcome to Search4Work. It is a free platform where you can find and offer work.</h4>
+            <h1 class="text-center" th:text="#{about.title1}">(About Search4Work)</h1>
+            <h4 class="text-center" th:text="#{about.text1}">(Text 1)</h4>
             <div class="page-header"></div>
-            <h1 class="text-center"> Vision </h1>
-            <h4 class="text-center">
-                Nurture a winning network of customers and suppliers, together we create mutual, enduring value. </h4>
+            <h1 class="text-center" th:text="#{about.title2}">(Vision)</h1>
+            <h4 class="text-center" th:text="#{about.text2}">(Text 2)</h4>
             <div class="page-header"></div>
-            <h1 class="text-center"> Mission </h1>
-            <h4 class="text-center">Our mission to give an opportunity to find a job or certified specialist as fast as possible.</h4>
+            <h1 class="text-center" th:text="#{about.title3}">(Mission)</h1>
+            <h4 class="text-center" th:text="#{about.text3}">(Text 3)</h4>
             <div class="page-header"></div>
-
         </div>
     </div>
 </div>

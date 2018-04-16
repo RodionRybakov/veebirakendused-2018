@@ -25,35 +25,37 @@
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
 						data-target="#navbar-collapse-2">
-					<span class="sr-only">Toggle navigation</span>
+					<span class="sr-only" th:text="#{menu.toggle}">(Toggle navigation)</span>
 				</button>
 				<a class="navbar-brand" href="/">Search4Work</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-2">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a th:href="@{/about}">About Us</a></li>
+					<li><a th:href="@{${#httpServletRequest.requestURI} + '?lang=en'}">English</a></li>
+					<li><a th:href="@{${#httpServletRequest.requestURI} + '?lang=et'}">Eesti</a></li>
+					<li><a th:href="@{/about}" th:text="#{menu.about}">(About Us)</a></li>
 					
-					<li sec:authorize="!isAuthenticated()"><a th:href="@{/signup}">Register</a></li>
-					<li sec:authorize="isAuthenticated()"><a th:href="@{/offers/add}">Add offer</a></li>
-					<li sec:authorize="isAuthenticated()"><a th:href="@{/account}">Account</a></li>
+					<li sec:authorize="!isAuthenticated()"><a th:href="@{/signup}" th:text="#{main.signup}">(Register)</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/offers/add}" th:text="#{menu.add}">(Add offer)</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/account}" th:text="#{menu.account}">(Account)</a></li>
 
 					<li sec:authorize="!isAuthenticated()">
 						<a class="btn btn-default btn-outline btn-circle" data-toggle="collapse" href="#nav-collapse2"
-						   aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
+						   aria-expanded="false" aria-controls="nav-collapse2" th:text="#{main.login}">(Login)</a>
 					</li>
-					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{menu.logout}">(Logout)</a></li>
 				</ul>
 				<div class="collapse nav navbar-nav nav-collapse" id="nav-collapse2">
 					<form class="navbar-form navbar-right form-inline" role="form" th:action="@{/login}" method="post">
 						<div class="form-group">
-							<label class="sr-only" for="username">Username</label>
+							<label class="sr-only" for="username" th:text="#{main.username}">(Username)</label>
 							<input class="form-control" name="username" id="username" placeholder="Username" autofocus required/>
 						</div>
 						<div class="form-group">
-							<label class="sr-only" for="password">Password</label>
+							<label class="sr-only" for="password" th:text="#{main.password}">(Password)</label>
 							<input type="password" class="form-control" name="password" id="password" placeholder="Password" required/>
 						</div>
-						<button type="submit" class="btn btn-success">Sign in</button>
+						<button type="submit" class="btn btn-success" th:text="#{main.login}">(Login)</button>
 					</form>
 				</div>
 			</div>

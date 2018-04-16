@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xml:lang="en" lang="en">
 
-<head th:include="layout :: htmlhead" th:with="title='Account | Search4Work'"></head>
+<head th:include="layout :: htmlhead" th:with="title=#{title.account}"></head>
 
 <body>
 <div th:include="layout :: navbar">(navbar)</div>
 
 <div class="container container-main">
 	<div class="row">
-		<h2>My offers</h2>
+		<h2 th:text="#{account.myoffers}">(My offers)</h2>
 		<hr>
 		<div class="row" th:each="offer : ${offers}" th:id="'offer' + ${offer.id}">
 			<div class="col-xs-12 col-sm-6 col-md-6">
@@ -18,15 +18,15 @@
 			<div class="col-xs-12 col-sm-6 col-md-6" align="right">
 				<a class="btn btn-primary a-btn-slide-text" id="offerView" data-toggle="modal" data-target="#offerModal">
 					<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-					<span>View</span>
+					<span th:text="#{account.view}">(View)</span>
 				</a>
 				<a class="btn btn-primary a-btn-slide-text" id="offerEdit">
 					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-					<span>Edit</span>
+					<span th:text="#{account.edit}">(Edit)</span>
 				</a>
 				<a class="btn btn-primary a-btn-slide-text" id="offerDelete">
 					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					<span>Delete</span>
+					<span th:text="#{account.delete}">(Delete)</span>
 				</a>
 			</div>
         </div>
@@ -41,7 +41,7 @@
                         <div class="row" id="offerPreview"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" th:text="#{account.modal.close}">(Close)</button>
                     </div>
                 </div>
             </div>
