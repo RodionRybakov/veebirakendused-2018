@@ -16,47 +16,38 @@
 			</div>
 
 			<div class="col-xs-12 col-sm-6 col-md-6" align="right">
-				<a id="offerView">
-					<!--<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>-->
-					<!--<span>View</span>-->
-					<button type="button"  class="btn btn-primary a-btn-slide-text" data-toggle="modal" data-target="#myModal">
-						<span class="glyphicon glyphicon-eye-open">View</span>
-					</button>
-					<!---<span type="button" class="glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal">View</span>-->
+				<a class="btn btn-primary a-btn-slide-text" id="offerView" data-toggle="modal" data-target="#offerModal">
+					<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+					<span>View</span>
 				</a>
-				<a id="offerEdit">
-					<button type="button"  class="btn btn-primary a-btn-slide-text" data-toggle="modal" data-target="#myModalEdit">
-						<span class="glyphicon glyphicon-edit" aria-hidden="true">Edit</span>
-					<!--<span>Edit</span>-->
-					</button>
+				<a class="btn btn-primary a-btn-slide-text" id="offerEdit">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+					<span>Edit</span>
 				</a>
 				<a class="btn btn-primary a-btn-slide-text" id="offerDelete">
 					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 					<span>Delete</span>
 				</a>
 			</div>
-			<!--------------MODEL----------------->
-				<div class="modal fade" id="myModal" role="dialog">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-							</div>
-							<div class="modal-body">
-			<!--------------BODY----------------->
-			<div class="row" id="offerPreview"></div>
-			<!---------------BODY--------------->
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-------------MODEL------------------>
-		</div>
-	</div>
+        </div>
+        
+        <div class="modal fade" id="offerModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" id="offerPreview"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>
 <script th:src="@{/js/account.js}"></script>

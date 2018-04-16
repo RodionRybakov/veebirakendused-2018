@@ -13,15 +13,41 @@ $(function () {
 
 						function (data) {
 							var json = $.parseJSON(data);
-							$('#offerPreview').empty();
-							$('#offerPreview').append(
-                                     '<center>'+'<h3>'+json['title']+'</h3>'+'</center>'+
-								'<br>' +
-									'<p id = "offer_style">' +
-										'<b>&nbsp;&nbsp;&nbsp;&nbsp; Description: </b> ' + json['description'] + '<br>' +
-										'<b>&nbsp;&nbsp;&nbsp;&nbsp; Phone: </b> ' + json['phone'] + '<br>' +
-										'<b>&nbsp;&nbsp;&nbsp;&nbsp; Address: </b> ' + json['address'] + '<br>' +
-									'</p>'
+							$('#offerPreview').empty().append(
+								'<div class="col-md-12">\n' +
+								'\t<div class="col-md-3 crane-image-block ">\n' +
+								'\t\t<div class="crane-list-img">\n' +
+								'\t\t\t<img class="img-responsive" src="/img/offer_unknown.png"/>\n' +
+								'\t\t</div>\n' +
+								'\t</div>\n' +
+								'\t<div class="col-md-7">\n' +
+								'\t\t<div class="crane-list-content">\n' +
+								'\t\t\t<div class="crane-title">\n' +
+								'\t\t\t\t<h3>' + json['title'] + '</h3>\n' +
+								'\t\t\t</div>\n' +
+								'\t\t\t<div class="crane-phone">\n' +
+								'\t\t\t\t<ul class="list-inline">\n' +
+								'\t\t\t\t\t<li><i class="fa fa-phone"></i>  <span>' + json['phone'] + '</span></li>\n' +
+								'\t\t\t\t</ul>\n' +
+								'\t\t\t</div>\n' +
+								'\t\t\t<div class="crane-address">\n' +
+								'\t\t\t\t<ul class="list-inline">\n' +
+								'\t\t\t\t\t<li><i class="fa fa-map-marker"></i></li>\n' +
+								'\t\t\t\t\t<li>' + json['address'] + '</li>\n' +
+								'\t\t\t\t</ul>\n' +
+								'\t\t\t</div>\n' +
+								'\t\t\t<div class="crane-category">\n' +
+								'\t\t\t\t<!--<ul class="list-inline">-->\n' +
+								'\t\t\t\t\t<!--<li><a href="#">Cybersecurity</a></li>-->\n' +
+								'\t\t\t\t\t<!--<li><a href="#">Crane Towing Service</a></li>-->\n' +
+								'\t\t\t\t\t<!--<li><a href="#">Salary starting from 10 000$</a></li>-->\n' +
+								'\t\t\t\t\t<!--<li><a href="#">More...</a></li>-->\n' +
+								'\t\t\t\t<!--</ul>-->\n' +
+								'\t\t\t\t<p title="description">' + json['description'] + '</p>\n' +
+								'\t\t\t</div>\n' +
+								'\t\t</div>\n' +
+								'\t</div>\n' +
+								'</div>'
 							);
 						}
 
@@ -44,12 +70,4 @@ $(function () {
 				break;
 		}
 	});
-});
-
-$(document).ready(function(){
-    $("#offerView").click(function(){
-        $("#myModalEdit").modal("show");
-    });
-        $("#myModalEdit").on('hidden.bs.modal', function () {
-    });
 });
