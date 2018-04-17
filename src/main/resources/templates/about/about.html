@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xml:lang="en" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xml:lang="en"
+      lang="en">
 <head th:include="layout :: htmlhead" th:with="title=#{title.about}"></head>
 
 <body>
@@ -22,16 +23,13 @@
             <div class="page-header"></div>
         </div>
     </div>
+    <div class="row">
+        <div id="map" style="width:100%; height:350px"></div>
+    </div>
 </div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>
+<script th:src="@{js/map.js}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzye0yyjWF_MCQ1QfCimRg2grzmtu46E&callback=myMap"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
