@@ -16,7 +16,7 @@ $(function () {
 								'<div class="col-md-12">' +
 								'    <div class="col-md-3 crane-image-block ">' +
 								'        <div class="crane-list-img">' +
-								'            <img class="img-responsive" src="/img/offer_unknown.png"/>' +
+								'            <img class="img-responsive" src="/img/offer_unknown.png" alt="offer-unknown-image"/>' +
 								'        </div>' +
 								'    </div>' +
 								'    <div class="col-md-7">' +
