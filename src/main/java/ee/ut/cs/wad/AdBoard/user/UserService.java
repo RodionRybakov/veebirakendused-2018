@@ -1,6 +1,7 @@
 package ee.ut.cs.wad.AdBoard.user;
 
 import com.sendgrid.*;
+import ee.ut.cs.wad.AdBoard.application.config.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,24 +24,27 @@ public class UserService {
 	private final RoleRepository roleRepository;
 	private final AuthenticationManager authenticationManager;
 	private final UserDetailsService userDetailsService;
+	private final Messages messages;
 	
 	@Autowired
 	public UserService(UserRepository userRepository,
 					   RoleRepository roleRepository,
 					   AuthenticationManager authenticationManager,
-					   @Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService) {
+					   @Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService,
+					   Messages messages) {
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;
 		this.authenticationManager = authenticationManager;
 		this.userDetailsService = userDetailsService;
+		this.messages = messages;
 	}
 	
 	public void addUser(User user) {
 		User existing = userRepository.findUserByUsername(user.getUsername());
-		if (existing != null) throw new UnsupportedOperationException("This username is taken");
+		if (existing != null) throw new UnsupportedOperationException(messages.get("signup.error.username"));
 		
 		existing = userRepository.findUserByEmail(user.getEmail());
-		if (existing != null) throw new UnsupportedOperationException("User with this email already exists");
+		if (existing != null) throw new UnsupportedOperationException(messages.get("signup.error.email"));
 		
 		Role role = roleRepository.findRoleByName("USER");
 		
