@@ -90,6 +90,7 @@
     margin-bottom: 30px;
 }
 
+/* Navbar */
 #login-dp {
     min-width: 250px;
     padding: 14px 14px 0;
@@ -118,4 +119,45 @@
 
 #login-dp .form-group {
     margin-bottom: 10px;
+}
+
+/* Smart-ID loader circle */
+.loader-circle {
+    display: flex;
+    justify-content: center;
+}
+
+.svg {
+    display: block;
+    animation: svg-rotate 8000ms linear infinite;
+}
+
+circle {
+    fill: transparent;
+    stroke: #337ab7;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 0, 301.59289;
+    animation: stroke-dash 2000ms linear infinite, stroke-width 2000ms linear infinite, stroke-color 8000ms steps(4) infinite;
+}
+
+@keyframes svg-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes stroke-dash {
+    0% {
+        stroke-dasharray: 0, 301.59289;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 301.59289, 0;
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: 301.59289, 301.59289;
+        stroke-dashoffset: -301.59289;
+    }
 }

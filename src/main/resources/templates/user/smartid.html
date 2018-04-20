@@ -7,19 +7,40 @@
 
 <div class="container container-main">
 	<div class="row">
-		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-			<form method="post" role="form">
-				<h2>Smart-ID <span th:text="#{main.login}"></span></h2>
-				<hr>
+		<h2 class="text-center" sec:authorize="isAuthenticated()" th:text="#{login.success}">(Login success)</h2>
+		<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4" sec:authorize="!isAuthenticated()">
+			<h2>Smart-ID</h2>
+			<hr>
+			<div id="login-fields">
+				<div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
 				<div class="form-group">
-					<input required type="text" min="0" step="1" name="identityNumber" id="identityNumber" class="form-control input-lg" th:placeholder="#{login.identitynumber}" title="Identity number">
+					<select class="selectpicker form-control" id="selectpicker" title="country">
+						<option selected th:text="#{country.estonia}" value="EE">(Estonia)</option>
+						<option th:text="#{country.latvia}" value="LV">(Latvia)</option>
+						<option th:text="#{country.lithuania}" value="LT">(Lithuania)</option>
+					</select>
 				</div>
-				<input id="login" type="submit" th:value="#{main.login}" class="btn btn-primary btn-block btn-lg">
-			</form>
+				<div class="form-group">
+					<input required type="number" min="0" step="1" name="identityNumber" id="identityNumber" class="form-control input-lg" th:placeholder="#{login.identity-number}" title="Identity number">
+				</div>
+				<input id="login-smartid" type="submit" th:value="#{main.login}" class="btn btn-primary btn-block btn-lg">
+			</div>
+			
+			<div id="loader" hidden>
+				<div class="loader-circle">
+					<svg class="svg" width=200 height=200>
+						<circle cx=100 cy=100 r=50></circle>
+					</svg>
+				</div>
+				<div>
+					<h3 class="text-center" id="control-code"></h3>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>
+<script th:src="@{js/smartid.js}"></script>
 </body>
 </html>

@@ -1,16 +1,10 @@
 package ee.ut.cs.wad.AdBoard.user;
 
-import ee.sk.smartid.AuthenticationHash;
-import ee.sk.smartid.SmartIdAuthenticationResponse;
-import ee.sk.smartid.SmartIdClient;
-import ee.sk.smartid.rest.dao.NationalIdentity;
 import ee.ut.cs.wad.AdBoard.application.config.Messages;
 import ee.ut.cs.wad.AdBoard.offer.OfferRepository;
 import ee.ut.cs.wad.AdBoard.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -25,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 	
 	private static final String LOGIN_PAGE = "user/login";
-	private static final String SMARTID_PAGE = "user/smartid";
 	private static final String SIGNUP_PAGE = "user/signup";
 	private static final String ACCOUNT_PAGE = "user/account";
 	private static final String ADMIN_PAGE = "user/admin";
@@ -54,42 +47,6 @@ public class UserController {
 		if (error != null) model.addAttribute("error", messages.get("login.error"));
 		if (logout != null) model.addAttribute("logout", messages.get("login.success.logout"));
 		return LOGIN_PAGE;
-	}
-	
-	@RequestMapping(value = "/login/smartid", method = RequestMethod.GET)
-	public String login() {
-		return SMARTID_PAGE;
-	}
-	
-	@RequestMapping(value = "/login/smartid", method = RequestMethod.POST)
-	public String login(Model model, String identityNumber) {
-		SmartIdClient client = new SmartIdClient();
-		client.setRelyingPartyUUID("00000000-0000-0000-0000-000000000000");
-		client.setRelyingPartyName("DEMO");
-		client.setHostUrl("https://sid.demo.sk.ee/smart-id-rp/v1/");
-		
-		NationalIdentity nationalIdentity = new NationalIdentity("EE", identityNumber);
-		AuthenticationHash authenticationHash = AuthenticationHash.generateRandomHash();
-		String verificationCode = authenticationHash.calculateVerificationCode();
-		
-		User user = userRepository.findUserByIdentityNumber(identityNumber);
-		
-		if (user != null) {
-//			SmartIdAuthenticationResponse response = client
-//					.createAuthentication()
-//					.withNationalIdentity(nationalIdentity)
-//					.withAuthenticationHash(authenticationHash)
-//					.withCertificateLevel("QUALIFIED")
-//					.authenticate();
-			
-			String username = user.getUsername();
-			String password = user.getPassword();
-			
-			Authentication authentication = new UsernamePasswordAuthenticationToken(username, password, AuthorityUtils.createAuthorityList("USER"));
-			SecurityContextHolder.getContext().setAuthentication(authentication);
-			return "redirect:/account";
-		}
-		return SMARTID_PAGE;
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
