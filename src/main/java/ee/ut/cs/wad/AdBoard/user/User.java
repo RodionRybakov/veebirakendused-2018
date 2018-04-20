@@ -36,10 +36,27 @@ public class User {
 	@NotNull
 	private String email;
 	
+	private String identityNumber;
+	
 	@ManyToMany
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
 	
 	@OneToMany(mappedBy = "owner")
 	private Set<Offer> offers;
+	
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", active=" + active +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", email='" + email + '\'' +
+				", roles=" + roles.toString() +
+				", offers=" + offers.toString() +
+				'}';
+	}
 }

@@ -1,104 +1,21 @@
-/* Navigation bar */
-.navbar {
-    margin-bottom: 0;
-}
-
-.navbar-brand {
-    position: relative;
-    z-index: 2;
-}
-
-.navbar-nav.navbar-right .btn {
-    position: relative;
-    z-index: 2;
-    padding: 4px 20px;
-    margin: 10px auto;
-}
-
-.navbar .navbar-collapse {
-    position: relative;
-}
-
-.navbar .navbar-collapse .navbar-right > li:last-child {
-    padding-left: 22px;
-}
-
-.navbar .nav-collapse {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    padding-right: 120px;
-    padding-left: 80px;
-    width: 100%;
-}
-
-.navbar.navbar-default .nav-collapse {
-    background-color: #f8f8f8;
-}
-
-.navbar.navbar-inverse .nav-collapse {
-    background-color: #222;
-}
-
-.navbar .nav-collapse .navbar-form {
-    border-width: 0;
-    box-shadow: none;
-}
-
-.nav-collapse > li {
-    float: right;
-}
-
-.btn.btn-circle {
-    border-radius: 50px;
-}
-
-.optgroup {
-    width: 200px;
-}
-
-.btn.btn-outline {
-    background-color: transparent;
-}
-
-@media screen and (max-width: 767px) {
-    .navbar .navbar-collapse .navbar-right > li:last-child {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .navbar .nav-collapse {
-        margin: 7.5px auto;
-        padding: 0;
-    }
-
-    .navbar .nav-collapse .navbar-form {
-        margin: 0;
-    }
-
-    .nav-collapse > li {
-        float: none;
-    }
-}
-
 .container-main {
-	margin-top: 30px;
+    margin-top: 30px;
 }
 
-/* Home page button centralize css*/
-#buttonCenter {
+/* Home page button centralize */
+#home-buttons {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
 
-/* About us home page Image style */
-#imageStyle {
+.btn-icon {
+    padding-left: 5px;
+}
+
+/* About us home page image style */
+#about-image {
     width: 20%;
     height: auto;
     align-items: center;
@@ -115,96 +32,7 @@
     z-index: -1;
 }
 
-/* Accaunt dialog box */
-#dlgbox {
-    position: fixed;
-    display: none;
-    z-index: 1;
-
-}
-
-/*Account avatar */
-
-.avatar {
-    vertical-align: middle;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-}
-
-/* Drag and drop  */
-
-.files input {
-    outline: 2px dashed #92b0b3;
-    outline-offset: -10px;
-    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-    transition: outline-offset .15s ease-in-out, background-color .15s linear;
-    padding: 120px 0px 85px 35%;
-    text-align: center !important;
-    margin: 0;
-    width: 100% !important;
-}
-
-.files input:focus {
-    outline: 2px dashed #92b0b3;
-    outline-offset: -10px;
-    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-    transition: outline-offset .15s ease-in-out, background-color .15s linear;
-    border: 1px solid #92b0b3;
-}
-
-.files {
-    position: relative
-}
-
-.files:after {
-    pointer-events: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 50px;
-    right: 0;
-    height: 56px;
-    content: "";
-    background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
-    display: block;
-    margin: 0 auto;
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
-
-.color input {
-    background-color: #f1f1f1;
-}
-
-.files:before {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    pointer-events: none;
-    width: 100%;
-    right: 0;
-    height: 57px;
-    content: " or drag it here. ";
-    display: block;
-    margin: 0 auto;
-    color: #2ea591;
-    font-weight: 600;
-    text-transform: capitalize;
-    text-align: center;
-}
-
-/* Style for add adv */
-.mystyle {
-    width: 100%;
-    padding: 25px;
-    background-color: grey;
-    color: white;
-    font-size: 25px;
-    box-sizing: border-box;
-}
-
-/****************** Crane Listing View Classes ***********/
+/* Offers */
 .crane-grid-listing {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     margin-bottom: 15px;
@@ -224,72 +52,24 @@
     transition: all 0.5s ease-out;
 }
 
-/*************************************
-  1. MARGIN CSS
-**************************************/
-.nav-content-margin {
-    margin-top: 50px;
-}
-
-.content-top-margin {
-    margin-top: 15px;
+.crane-list-content svg, i {
+    color: #febf00;
+    padding-right: 2px;
 }
 
 .margin-t-40 {
     margin-top: 40px;
 }
 
-.margin-b-15 {
-    margin-bottom: 15px;
-}
-
-/*************************************
-  2. PADDING CSS
-**************************************/
-.padding-left-20 {
-    padding-left: 20px;
-}
-
 .padding-b-10 {
     padding-bottom: 10px;
-}
-
-.padding-tb-10 {
-    padding: 10px 0px 10px 0px;
-}
-
-/*************************************
-  3. Background CSS
-**************************************/
-.bg-blue {
-    background: #667788;
-    color: #fff !important;
-}
-
-.bg-blue-1 {
-    background-color: #e7f3fe;
-    color: #424448 !important;
-}
-
-.bg-grey-1 {
-    background-color: #f2f2f2;
-    color: #424448 !important;
-}
-
-.bg-light-grey-1 {
-    background-color: #f0f3f5;
-    color: #424448 !important;
-}
-
-.crane-list-content svg, i {
-    color: #febf00;
-    padding-right: 2px;
 }
 
 .btn-file {
     position: relative;
     overflow: hidden;
 }
+
 .btn-file input[type=file] {
     position: absolute;
     top: 0;
@@ -306,10 +86,78 @@
     display: block;
 }
 
-#searchBar {
+#search-bar {
     margin-bottom: 30px;
 }
 
-#offerPreview {
-    /*display: none;*/
+/* Navbar */
+#login-dp {
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+#login-dp .help-block {
+    font-size: 12px
+}
+
+#login-dp .bottom {
+    background-color: rgba(255, 255, 255, .8);
+    border-top: 1px solid #ddd;
+    clear: both;
+    padding: 14px;
+}
+
+#login-dp .social-buttons {
+    margin: 12px 0
+}
+
+#login-dp .social-buttons a {
+    width: 49%;
+}
+
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+
+/* Smart-ID loader circle */
+.loader-circle {
+    display: flex;
+    justify-content: center;
+}
+
+.svg {
+    display: block;
+    animation: svg-rotate 8000ms linear infinite;
+}
+
+circle {
+    fill: transparent;
+    stroke: #337ab7;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 0, 301.59289;
+    animation: stroke-dash 2000ms linear infinite, stroke-width 2000ms linear infinite, stroke-color 8000ms steps(4) infinite;
+}
+
+@keyframes svg-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes stroke-dash {
+    0% {
+        stroke-dasharray: 0, 301.59289;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 301.59289, 0;
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: 301.59289, 301.59289;
+        stroke-dashoffset: -301.59289;
+    }
 }

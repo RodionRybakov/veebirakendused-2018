@@ -1,12 +1,12 @@
 package ee.ut.cs.wad.AdBoard.user;
 
+import ee.ut.cs.wad.AdBoard.application.config.Messages;
 import ee.ut.cs.wad.AdBoard.offer.OfferRepository;
 import ee.ut.cs.wad.AdBoard.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -28,19 +27,25 @@ public class UserController {
 	private final UserRepository userRepository;
 	private final OfferRepository offerRepository;
 	private final PasswordEncoder passwordEncoder;
+	private final Messages messages;
 
 	@Autowired
-	public UserController(UserService userService, UserRepository userRepository, OfferRepository offerRepository, PasswordEncoder passwordEncoder) {
+	public UserController(UserService userService,
+						  UserRepository userRepository,
+						  OfferRepository offerRepository,
+						  PasswordEncoder passwordEncoder,
+						  Messages messages) {
 		this.userService = userService;
 		this.userRepository = userRepository;
 		this.offerRepository = offerRepository;
 		this.passwordEncoder = passwordEncoder;
+		this.messages = messages;
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model, String error, String logout) {
-		if (error != null) model.addAttribute("error", "Invalid username and password.");
-		if (logout != null) model.addAttribute("logout", "You have been logged out successfully.");
+		if (error != null) model.addAttribute("error", messages.get("login.error"));
+		if (logout != null) model.addAttribute("logout", messages.get("login.success.logout"));
 		return LOGIN_PAGE;
 	}
 	
@@ -60,7 +65,7 @@ public class UserController {
 		
 		try {
 			userService.addUser(user);
-			model.addAttribute("success", "You were successfully registered");
+			model.addAttribute("success", messages.get("signup.success"));
 			userService.authenticateUserAndSetSession(userDTO.getUsername(), userDTO.getPassword(), request);
 		} catch (UnsupportedOperationException e) {
 			model.addAttribute("error", e.getMessage());

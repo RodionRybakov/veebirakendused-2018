@@ -4,18 +4,16 @@
 
 <body>
 <div th:include="layout :: navbar">(navbar)</div>
-<div th:if="${param.error}" class="alert alert-error">Invalid username and password.</div>
-<div th:if="${param.logout}" class="alert alert-success">You have been logged out.</div>
 
-<div class="container" id="buttonCenter">
+<div class="container" id="home-buttons">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6 text-center">
-			<h3>Job for a day or a year</h3>
-			<a th:href="@{/offers}" class="btn btn-lg btn-success">I want to work <i class="fas fa-arrow-circle-up"></i></a>
+			<h3 th:text="#{home.left.title}">(Job for a day or a year)</h3>
+			<a th:href="@{/offers}" class="btn btn-lg btn-success"><span th:text="#{home.left.button}">(I want to work)</span><i class="btn-icon fas fa-arrow-circle-up"></i></a>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6 text-center">
-			<h3>Thousands of workers search every day</h3>
-			<a th:href="@{/offers/add}" class="btn btn-lg btn-primary">I need workers <i class="fas fa-arrow-circle-down"></i></a>
+			<h3 th:text="#{home.right.title}">(Thousands of workers search every day)</h3>
+			<a th:href="@{/offers/add}" class="btn btn-lg btn-primary"><span th:text="#{home.right.button}">(I need workers)</span><i class="btn-icon fas fa-arrow-circle-down"></i></a>
 		</div>
 	</div>
 </div>

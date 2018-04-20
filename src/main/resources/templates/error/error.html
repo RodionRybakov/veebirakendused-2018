@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xml:lang="en" lang="en">
-<head th:include="layout :: htmlhead" th:with="title='Error | Search4Work'"></head>
+<head th:include="layout :: htmlhead" th:with="title=#{title.error}"></head>
 
 <body>
 <div th:include="layout :: navbar">(navbar)</div>
@@ -8,9 +8,9 @@
 <div class="container container-main">
 	<div class="jumbotron">
 		<div class="text-center"><i class="far fa-5x fa-frown" style="color:#d9534f;"></i></div>
-		<h1 class="text-center">404 Not Found<p> </p><p><small class="text-center">Something went wrong</small></p></h1>
+		<h1 class="text-center">404 Not Found<p> </p><p><small class="text-center" th:text="#{error.label}">(Something went wrong)</small></p></h1>
 		<p class="text-center">Try pressing the back button or clicking on this button.</p>
-		<p class="text-center"><a class="btn btn-primary" href="/"><i class="fas fa-home"></i> Take Me Home</a></p>
+		<p class="text-center"><a class="btn btn-primary" href="/"><i class="fas fa-home"></i> <span th:text="#{error.button}">(Take Me Home)</span></a></p>
 	</div>
 </div>
 

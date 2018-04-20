@@ -39,4 +39,16 @@ public class Offer {
 	@JoinTable(name = "offers_users", joinColumns = @JoinColumn(name = "offer_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private User owner;
 	
+	@Override
+	public String toString() {
+		return "Offer{" +
+				"id=" + id +
+				", title='" + title + '\'' +
+				", description='" + description + '\'' +
+				", phone=" + phone +
+				", address='" + address + '\'' +
+				", city='" + city + '\'' +
+				", categories=" + categories.toString() +
+				'}';
+	}
 }

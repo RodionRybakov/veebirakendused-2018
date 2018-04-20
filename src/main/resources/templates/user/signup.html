@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xml:lang="en" lang="en">
-<head th:include="layout :: htmlhead" th:with="title='Sign Up | Search4Work'"></head>
+<head th:include="layout :: htmlhead" th:with="title=#{title.signup}"></head>
 
 <body>
 <div th:include="layout :: navbar">(navbar)</div>
@@ -12,42 +12,43 @@
 				<div th:if="${success != null}" class="alert alert-success" role="alert" th:text="${success}"></div>
 				<div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
 				
-				<h2>Feel free to Sign Up
-					<small>It's free.</small>
+				<h2>
+					<span th:text="#{signup.title}">(Feel free to Sign Up)</span>
+					<small th:text="#{signup.title.small}">(It's free.)</small>
 				</h2>
 				<hr>
 				<div class="form-group">
-					<input required type="text" name="username" id="usernameSignUp" class="form-control input-lg" placeholder="Username">
+					<input required type="text" name="username" id="usernameSignUp" class="form-control input-lg" th:placeholder="#{main.username}" title="Username">
 				</div>
 				<div class="form-group">
-					<input required type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
+					<input required type="email" name="email" id="email" class="form-control input-lg" th:placeholder="#{main.email}" title="Email Address">
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<input required type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name">
+							<input required type="text" name="firstName" id="firstName" class="form-control input-lg" th:placeholder="#{signup.firstname}" title="First Name">
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<input required type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name">
+							<input required type="text" name="lastName" id="lastName" class="form-control input-lg" th:placeholder="#{signup.lastname}" title="Last Name">
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<input required type="password" name="password" id="passwordSignUp" class="form-control input-lg" placeholder="Password" minlength="6">
+							<input required type="password" name="password" id="passwordSignUp" class="form-control input-lg" th:placeholder="#{main.password}" title="Password" minlength="6">
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<input required type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control input-lg" placeholder="Confirm Password">
+							<input required type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control input-lg" th:placeholder="#{main.password.confirm}" title="Confirm Password">
 						</div>
 					</div>
 				</div>
 				
-				<input id="register" type="submit" value="Register" class="btn btn-primary btn-block btn-lg">
+				<input id="register" type="submit" th:value="#{main.signup}" class="btn btn-primary btn-block btn-lg">
 			</form>
 		</div>
 	</div>
