@@ -2,6 +2,7 @@ package ee.ut.cs.wad.AdBoard.user;
 
 import ee.ut.cs.wad.AdBoard.application.config.Messages;
 import ee.ut.cs.wad.AdBoard.offer.OfferRepository;
+import ee.ut.cs.wad.AdBoard.stats.StatsRepository;
 import ee.ut.cs.wad.AdBoard.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -25,6 +26,7 @@ public class UserController {
 	
 	private final UserService userService;
 	private final UserRepository userRepository;
+	private final StatsRepository statsRepository;
 	private final OfferRepository offerRepository;
 	private final PasswordEncoder passwordEncoder;
 	private final Messages messages;
@@ -32,11 +34,12 @@ public class UserController {
 	@Autowired
 	public UserController(UserService userService,
 						  UserRepository userRepository,
-						  OfferRepository offerRepository,
+						  StatsRepository statsRepository, OfferRepository offerRepository,
 						  PasswordEncoder passwordEncoder,
 						  Messages messages) {
 		this.userService = userService;
 		this.userRepository = userRepository;
+		this.statsRepository = statsRepository;
 		this.offerRepository = offerRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.messages = messages;
@@ -79,6 +82,8 @@ public class UserController {
 		
 		if (auth.getName().equals("admin")) {
 			model.addAttribute("total", userRepository.getAll());
+			model.addAttribute("stats", statsRepository.findAll());
+			model.addAttribute("browser", statsRepository.popularBrowser());
 			return ADMIN_PAGE;
 		}
 		
