@@ -32,8 +32,8 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-2">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a th:href="@{${#httpServletRequest.requestURI} + '?lang=en'}"><img th:width="24" th:height="18" th:src="@{/img/gb.svg}" alt="gb-flag"></a></li>
-					<li><a th:href="@{${#httpServletRequest.requestURI} + '?lang=et'}"><img th:width="24" th:height="18" th:src="@{/img/ee.svg}" alt="ee-flag"></a></li>
+					<li><a th:href="@{${#httpServletRequest.requestURI} + '?lang=en'}"><img th:width="24" th:height="18" th:src="@{/img/gb.png}" alt="gb-flag"></a></li>
+					<li><a th:href="@{${#httpServletRequest.requestURI} + '?lang=et'}"><img th:width="24" th:height="18" th:src="@{/img/ee.png}" alt="ee-flag"></a></li>
 					<li><a th:href="@{/about}" th:text="#{menu.about}">(About Us)</a></li>
 					
 					<li sec:authorize="isAuthenticated()"><a th:href="@{/offers/add}" th:text="#{menu.add}">(Add offer)</a></li>
