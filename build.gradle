@@ -35,21 +35,14 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-mail')
 	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4')
-
 	compile('org.springframework.security:spring-security-oauth2-client:5.0.4.RELEASE')
 	compile('org.springframework.security:spring-security-oauth2-jose:5.0.4.RELEASE')
 	compile('org.springframework.cloud:spring-cloud-security:2.0.0.M3')
-	compile('ee.sk.smartid:smart-id-java-client:1.0')
 
-    runtime('mysql:mysql-connector-java')
+	runtime('mysql:mysql-connector-java')
 	compileOnly('org.projectlombok:lombok')
-
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('org.springframework.security:spring-security-test')
-
-	compile("org.springframework.boot:spring-boot-devtools")
-
 	compile('com.sendgrid:sendgrid-java:3.0.9')
+	compile('ee.sk.smartid:smart-id-java-client:1.0')
 	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.5'
 	compile group: 'eu.bitwalker', name: 'UserAgentUtils', version: '1.21'
 
@@ -59,5 +52,9 @@ dependencies {
 	compile group: 'org.webjars', name: 'bootstrap-select', version: '1.12.4'
 	compile group: 'org.webjars', name: 'font-awesome', version: '5.0.8'
 
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.security:spring-security-test')
 	compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
+
+	compile("org.springframework.boot:spring-boot-devtools")
 }
