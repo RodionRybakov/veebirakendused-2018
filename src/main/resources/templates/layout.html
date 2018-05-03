@@ -32,8 +32,8 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-2">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a th:href="@{${#httpServletRequest.requestURI} + '?lang=en'}"><img th:width="24" th:height="18" th:src="@{/img/gb.svg}" alt="gb-flag"></a></li>
-					<li><a th:href="@{${#httpServletRequest.requestURI} + '?lang=et'}"><img th:width="24" th:height="18" th:src="@{/img/ee.svg}" alt="ee-flag"></a></li>
+					<li><a th:href="@{${#httpServletRequest.requestURI} + '?lang=en'}"><img th:src="@{/img/gb.png}" alt="gb-flag"></a></li>
+					<li><a th:href="@{${#httpServletRequest.requestURI} + '?lang=et'}"><img th:src="@{/img/ee.png}" alt="ee-flag"></a></li>
 					<li><a th:href="@{/about}" th:text="#{menu.about}">(About Us)</a></li>
 					
 					<li sec:authorize="isAuthenticated()"><a th:href="@{/offers/add}" th:text="#{menu.add}">(Add offer)</a></li>
@@ -94,7 +94,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
 	
-	<script th:src="@{/js/fallback.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
 	<script th:src="@{/js/particles.min.js}"></script>
 	<script>particlesJS.load('particles-js', 'js/particles.json')</script>
 </div>

@@ -10,11 +10,34 @@
 	<div class="row">
 		<h2>Admin panel</h2>
 		<hr>
-		<b>Total users: </b><span th:text="${total}">(total)</span>
+		<b th:text="#{admin.registered}">(Registered users)</b> <span th:text="${total}">(total)</span>
+		<br>
+		<b th:text="#{admin.popular-browser}">(Most popular browser)</b> <span th:text="${browser}">(browser)</span>
+		<br>
+		<br>
+		<div class="well">
+			<table class="table">
+				<thead>
+				<tr>
+					<th>IP</th>
+					<th th:text="#{admin.browser}">(Browser)</th>
+					<th th:text="#{admin.system}">(Operating System)</th>
+					<th th:text="#{admin.date}">(Date)</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="stat : ${stats}">
+					<td th:text="${stat.ip}">(IP)</td>
+					<td th:text="${stat.browser}">(Browser)</td>
+					<td th:text="${stat.operatingSystem}">(Operating System)</td>
+					<td th:text="${stat.date}">(Date)</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>
-<script th:src="@{/js/account.js}"></script>
 </body>
 </html>
