@@ -8,7 +8,7 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-			<form method="post" id="fileForm" role="form">
+			<form method="post" id="signup-form" role="form">
 				<div th:if="${success != null}" class="alert alert-success" role="alert" th:text="${success}"></div>
 				<div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
 				
@@ -55,6 +55,5 @@
 </div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>
-<script th:src="@{/js/signup.js}"></script>
 </body>
 </html>
