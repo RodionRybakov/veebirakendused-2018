@@ -1,4 +1,4 @@
-Web Application Development cource at University of Tartu
+Web Application Development course at University of Tartu
 
 [Live demo](https://search4work.herokuapp.com/)
 
